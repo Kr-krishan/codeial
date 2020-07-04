@@ -1,11 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
 import { PostsList, Navbar } from './index';
 import propTypes from 'prop-types';
 
-class App extends React.Component {
+const Home = () => {
+  return <h2>Home</h2>;
+};
 
+const Login = () => {
+  return <h2>Login</h2>;
+};
+
+const Signup = () => {
+  return <h2>Signup</h2>;
+};
+
+class App extends React.Component {
   // to fetch all the posts from api
   componentDidMount() {
     this.props.dispatch(fetchPosts());
@@ -15,10 +27,28 @@ class App extends React.Component {
     // console.log('props', this.props);
     const { posts } = this.props;
     return (
-      <div>
-        <Navbar />
-        <PostsList posts={posts} />
-      </div>
+      <Router>
+        <div>
+          <Navbar />
+          {/* <PostsList posts={posts} /> */}
+        </div>
+
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/signup">SignUp</Link>
+          </li>
+        </ul>
+
+        <Route exact path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+      </Router>
     );
   }
 }
