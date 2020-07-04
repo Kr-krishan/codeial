@@ -5,6 +5,7 @@ import logger from 'redux-logger';
 
 let store;
 
+// creating store with middlewares
 export function configureStore() {
     store=createStore(reducer,applyMiddleware(thunk,logger));
 

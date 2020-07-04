@@ -61,6 +61,7 @@ class PostsList extends Component {
   }
 }
 
+// to match the type of prop required
 PostsList.propTypes = {
   posts: propTypes.array.isRequired,
 };

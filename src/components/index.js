@@ -1,4 +1,9 @@
-import PostList from './PostsList';
-import App from './App';
+// to export each component from here
 
-export { PostList, App };
+// import all components
+import PostsList from './PostsList';
+import App from './App';
+import Navbar from './Navbar';
+
+// export
+export { PostsList, App, Navbar };

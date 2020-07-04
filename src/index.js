@@ -5,6 +5,7 @@ import App from './components/App';
 import { configureStore } from './store/index';
 import { Provider } from 'react-redux';
 
+// getting store from index of store via configureStore() function
 const store = configureStore();
 console.log('store', store.getState());
 ReactDOM.render(
