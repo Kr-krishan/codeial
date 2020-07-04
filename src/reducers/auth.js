@@ -1,8 +1,7 @@
-import { func } from 'prop-types';
 import {
-  LOGING_START,
-  LOGING_SUCCESS,
-  LOGING_FAILED,
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
 } from '../actions/actionTypes';
 
 const initialAuthState = {
@@ -14,19 +13,19 @@ const initialAuthState = {
 
 export default function auth(state = initialAuthState, action) {
   switch (action.type) {
-    case LOGING_START:
+    case LOGIN_START:
       return {
         ...state,
         inProgress: true,
       };
-    case LOGING_SUCCESS:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         user: action.user,
         isLoggedIn: true,
         error: null,
       };
-    case LOGING_FAILED:
+    case LOGIN_FAILED:
       return {
         ...state,
         inProgress: false,

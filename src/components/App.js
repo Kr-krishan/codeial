@@ -1,17 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { PostsList, Navbar, Home, Page404, Login } from './index';
+import { Navbar, Home, Page404, Login } from './index';
 import propTypes from 'prop-types';
-
-// const Home = () => {
-//   return <h2>Home</h2>;
-// };
-
-// const Login = () => {
-//   return <h2>Login</h2>;
-// };
 
 const Signup = (props) => {
   console.log(props);
@@ -34,17 +26,6 @@ class App extends React.Component {
           {/* <PostsList posts={posts} /> */}
         </div>
 
-        {/* <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/signup">SignUp</Link>
-          </li>
-        </ul> */}
         <Switch>
           <Route
             exact

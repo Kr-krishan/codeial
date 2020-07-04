@@ -4,6 +4,6 @@ export const UPDATE_POSTS = 'UPDATE_POSTS';
 
 //login actions
 
-export const LOGING_START = 'LOGING_START';
-export const LOGING_SUCCESS = 'LOGING_SUCCESS';
-export const LOGING_FAILED = 'LOGING_FAILED';
+export const LOGIN_START = 'LOGIN_START';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
