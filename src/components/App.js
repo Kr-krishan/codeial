@@ -2,16 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { PostsList, Navbar, Home, Page404 } from './index';
+import { PostsList, Navbar, Home, Page404, Login } from './index';
 import propTypes from 'prop-types';
 
 // const Home = () => {
 //   return <h2>Home</h2>;
 // };
 
-const Login = () => {
-  return <h2>Login</h2>;
-};
+// const Login = () => {
+//   return <h2>Login</h2>;
+// };
 
 const Signup = (props) => {
   console.log(props);
