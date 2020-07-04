@@ -2,18 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { PostsList, Navbar } from './index';
+import { PostsList, Navbar, Home, Page404 } from './index';
 import propTypes from 'prop-types';
 
-const Home = () => {
-  return <h2>Home</h2>;
-};
+// const Home = () => {
+//   return <h2>Home</h2>;
+// };
 
 const Login = () => {
   return <h2>Login</h2>;
 };
 
-const Signup = () => {
+const Signup = (props) => {
+  console.log(props);
   return <h2>Signup</h2>;
 };
 
@@ -33,7 +34,7 @@ class App extends React.Component {
           {/* <PostsList posts={posts} /> */}
         </div>
 
-        <ul>
+        {/* <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -43,11 +44,19 @@ class App extends React.Component {
           <li>
             <Link to="/signup">SignUp</Link>
           </li>
-        </ul>
-
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        </ul> */}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => {
+              return <Home posts={posts} {...props} />;
+            }}
+          />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route component={Page404} />
+        </Switch>
       </Router>
     );
   }
