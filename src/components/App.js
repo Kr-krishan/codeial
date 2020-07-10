@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { Navbar, Home, Page404, Login } from './index';
+import { Navbar, Home, Page404, Login, Signup } from './index';
 import propTypes from 'prop-types';
 
-const Signup = (props) => {
-  console.log(props);
-  return <h2>Signup</h2>;
-};
+// const Signup = (props) => {
+//   console.log(props);
+//   return <h2>Signup</h2>;
+// };
 
 class App extends React.Component {
   // to fetch all the posts from api

@@ -1,4 +1,5 @@
 export function getFormBody(params) {
+  console.log('params', params);
   //params ->data from login form
   let formBody = [];
 
@@ -8,6 +9,6 @@ export function getFormBody(params) {
 
     formBody.push(encodedKey + '=' + encodedValue); //formBody=["username=krishan" "password=123"]
   }
-
+  console.log('formBody', formBody.join('&'));
   return formBody.join('&'); // "username=krishan&password=123"
 }
