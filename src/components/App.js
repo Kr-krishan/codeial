@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
 import { Navbar, Home, Page404, Login, Signup } from './index';
 import propTypes from 'prop-types';
+import * as jwtDecode from 'jwt-decode';
 
 // const Signup = (props) => {
 //   console.log(props);
@@ -14,6 +15,12 @@ class App extends React.Component {
   // to fetch all the posts from api
   componentDidMount() {
     this.props.dispatch(fetchPosts());
+
+    const token = localStorage.token;
+    if (token) {
+      const user = jwtDecode(token);
+      console.log('user', user);
+    }
   }
 
   render() {

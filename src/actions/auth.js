@@ -43,6 +43,7 @@ export function login(email, password) {
 
         if (data.success) {
           // dispatch
+          localStorage.setItem('token', data.data.token);
           dispatch(loginSuccess(data.data.user));
           return;
         }
