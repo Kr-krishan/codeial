@@ -7,6 +7,7 @@ import {
   SIGNUP_START,
   SIGNUP_FAILED,
   SIGNUP_SUCCESS,
+  CLEAR_AUTH_STATE,
 } from './actionTypes';
 import { APIUrls } from '../helper/urls';
 import { getFormBody } from '../helper/utils';
@@ -130,5 +131,11 @@ export function authenticateUser(user) {
 export function logOutUser() {
   return {
     type: LOG_OUT,
+  };
+}
+
+export function clearAuthState() {
+  return {
+    type: CLEAR_AUTH_STATE,
   };
 }
