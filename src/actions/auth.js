@@ -1,5 +1,13 @@
-import { LOGIN_START, LOGIN_FAILED, LOGIN_SUCCESS } from './actionTypes';
-import { SIGNUP_START, SIGNUP_FAILED, SIGNUP_SUCCESS } from './actionTypes';
+import {
+  LOGIN_START,
+  LOGIN_FAILED,
+  LOGIN_SUCCESS,
+  AUTHENTICATE_USER,
+  LOG_OUT,
+  SIGNUP_START,
+  SIGNUP_FAILED,
+  SIGNUP_SUCCESS,
+} from './actionTypes';
 import { APIUrls } from '../helper/urls';
 import { getFormBody } from '../helper/utils';
 
@@ -103,11 +111,24 @@ export function signup(name, email, password, confirmPassword) {
         if (data.success) {
           // dispatch
           console.log('hello');
-          // localStorage.setItem('token', data.data.token);
+          localStorage.setItem('token', data.data.token);
           dispatch(signupSuccess(data.data.user));
           return;
         }
         dispatch(signupFailed(data.message));
       });
+  };
+}
+
+export function authenticateUser(user) {
+  return {
+    type: AUTHENTICATE_USER,
+    user,
+  };
+}
+
+export function logOutUser() {
+  return {
+    type: LOG_OUT,
   };
 }
