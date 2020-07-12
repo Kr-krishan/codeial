@@ -7,7 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { Navbar, Home, Page404, Login, Signup } from './index';
+import { Navbar, Home, Page404, Login, Signup, Settings } from './index';
 import propTypes from 'prop-types';
 import * as jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
@@ -17,9 +17,9 @@ import { authenticateUser } from '../actions/auth';
 //   return <h2>Signup</h2>;
 // };
 
-const Settings = () => {
-  return <div>Settings</div>;
-};
+// const Settings = () => {
+//   return <div>Settings</div>;
+// };
 
 const PrivateRoute = (privateRouteProps) => {
   const { path, isLoggedIn, component: Component } = privateRouteProps;
