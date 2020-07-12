@@ -8,9 +8,11 @@ import {
   SIGNUP_FAILED,
   SIGNUP_SUCCESS,
   CLEAR_AUTH_STATE,
+  EDIT_USER_SUCCESSFUL,
+  EDIT_USER_FAILED,
 } from './actionTypes';
 import { APIUrls } from '../helper/urls';
-import { getFormBody } from '../helper/utils';
+import { getFormBody, getAuthTokenFromLocalStorage } from '../helper/utils';
 
 // login
 export function startLogin() {
@@ -137,5 +139,54 @@ export function logOutUser() {
 export function clearAuthState() {
   return {
     type: CLEAR_AUTH_STATE,
+  };
+}
+
+export function editUserSuccessful(user) {
+  return {
+    type: EDIT_USER_SUCCESSFUL,
+    user,
+  };
+}
+
+export function editUserFailed(error) {
+  return {
+    type: EDIT_USER_FAILED,
+    error,
+  };
+}
+
+export function editUser(name, password, confirmPassword, userId) {
+  return (dispatch) => {
+    // dispatch(startLogin());
+    const url = APIUrls.editProfile();
+    // fetch method is generally gets data but here for login we need to post so
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${getAuthTokenFromLocalStorage()}`,
+      },
+      body: getFormBody({
+        name,
+        password,
+        confirm_password: confirmPassword,
+        id: userId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('EDIT PROFILE data', data);
+
+        if (data.success) {
+          // dispatch
+          dispatch(editUserSuccessful(data.data.user));
+          if (data.data.token) {
+            localStorage.setItem('token', data.data.token);
+            return;
+          }
+        }
+        dispatch(editUserFailed(data.message));
+      });
   };
 }

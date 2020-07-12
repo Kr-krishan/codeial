@@ -12,3 +12,8 @@ export function getFormBody(params) {
   console.log('formBody', formBody.join('&'));
   return formBody.join('&'); // "username=krishan&password=123"
 }
+
+// getting token of user from local storage
+export function getAuthTokenFromLocalStorage() {
+  return localStorage.getItem('token');
+}
