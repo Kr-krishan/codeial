@@ -21,13 +21,25 @@ import { authenticateUser } from '../actions/auth';
 //   return <div>Settings</div>;
 // };
 
+// added private route for settings
 const PrivateRoute = (privateRouteProps) => {
   const { path, isLoggedIn, component: Component } = privateRouteProps;
   return (
     <Route
       path={path}
       render={(props) => {
-        return isLoggedIn ? <Component {...props} /> : <Redirect to="/login" />;
+        return isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: {
+                from: props.location,
+              },
+            }}
+          />
+        );
       }}
     />
   );
