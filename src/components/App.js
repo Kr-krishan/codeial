@@ -7,15 +7,18 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { Navbar, Home, Page404, Login, Signup, Settings } from './index';
+import {
+  Navbar,
+  Home,
+  Page404,
+  Login,
+  Signup,
+  Settings,
+  UserProfile,
+} from './index';
 import propTypes from 'prop-types';
 import * as jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
-
-// const Signup = (props) => {
-//   console.log(props);
-//   return <h2>Signup</h2>;
-// };
 
 // const Settings = () => {
 //   return <div>Settings</div>;
@@ -87,6 +90,11 @@ class App extends React.Component {
           <PrivateRoute
             path="/settings"
             component={Settings}
+            isLoggedIn={auth.isLoggedIn}
+          />
+          <PrivateRoute
+            path="/user/:userId"
+            component={UserProfile}
             isLoggedIn={auth.isLoggedIn}
           />
           <Route component={Page404} />
