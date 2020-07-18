@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUserProfile } from '../actions/profile';
 import { APIUrls } from '../helper/urls';
 import { getAuthTokenFromLocalStorage } from '../helper/utils';
-import { addFriends } from '../actions/friends';
+import { addFriends, removeFriends } from '../actions/friends';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class UserProfile extends React.Component {
     this.state = {
       success: null,
       error: null,
+      successMsg: null,
     };
   }
 
@@ -57,6 +58,7 @@ class UserProfile extends React.Component {
       console.log('add friends', data);
       this.setState({
         success: true,
+        successMsg: 'Added friend Successfully!',
       });
       this.props.dispatch(addFriends(data.data.friendship));
     } else {
@@ -67,7 +69,35 @@ class UserProfile extends React.Component {
     }
   };
 
-  handleRemoveFriend = () => {};
+  handleRemoveFriend = async () => {
+    const userId = this.props.match.params.userId;
+
+    const url = APIUrls.removeFriend(userId);
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${getAuthTokenFromLocalStorage()}`,
+      },
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+    console.log('remove frnd', data);
+
+    if (data.success) {
+      this.setState({
+        success: true,
+        successMsg: 'removed friend Successfully',
+      });
+      this.props.dispatch(removeFriends(userId));
+    } else {
+      this.setState({
+        success: null,
+        error: data.message,
+      });
+    }
+  };
 
   render() {
     const {
@@ -79,7 +109,7 @@ class UserProfile extends React.Component {
     console.log('userProfile', this.props);
     console.log('userProfile props', params);
 
-    const { success, error } = this.state;
+    const { success, error, successMsg } = this.state;
     const isFriendOfUser = this.checkFriendOfUser();
 
     if (profile.inProgress) {
@@ -95,9 +125,7 @@ class UserProfile extends React.Component {
           />
         </div>
 
-        {success && (
-          <div className="alert success-dailog">Friend Added successfully</div>
-        )}
+        {success && <div className="alert success-dailog">{successMsg}</div>}
         {error && <div className="alert error-dailog">{error}</div>}
 
         <div className="field">

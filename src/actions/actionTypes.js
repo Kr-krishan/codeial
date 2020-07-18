@@ -34,4 +34,5 @@ export const FETCH_FRIENDS_SUCCESS = 'FETCH_FRIENDS_SUCCESS';
 export const FETCH_FRIENDS_FAILURE = 'FETCH_FRIENDS_FAILURE';
 
 //add friends
-export const ADD_FRIENDS = 'ADD_FRIENDS';
+export const ADD_FRIEND = 'ADD_FRIEND';
+export const REMOVE_FRIEND = 'REMOVE_FRIEND';
