@@ -1,4 +1,8 @@
-import { FETCH_FRIENDS_SUCCESS, FETCH_FRIENDS_FAILURE } from './actionTypes';
+import {
+  FETCH_FRIENDS_SUCCESS,
+  FETCH_FRIENDS_FAILURE,
+  ADD_FRIENDS,
+} from './actionTypes';
 import { APIUrls } from '../helper/urls';
 import { getAuthTokenFromLocalStorage } from '../helper/utils';
 
@@ -36,5 +40,12 @@ export function fetchUserFriends(userId) {
         }
         dispatch(fetchFriendsFailure(data.message));
       });
+  };
+}
+
+export function addFriends(friendship) {
+  return {
+    type: ADD_FRIENDS,
+    friendship,
   };
 }
