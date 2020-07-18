@@ -36,3 +36,6 @@ export const FETCH_FRIENDS_FAILURE = 'FETCH_FRIENDS_FAILURE';
 //add friends
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const REMOVE_FRIEND = 'REMOVE_FRIEND';
+
+// create post
+export const ADD_POST = 'ADD_POST';
