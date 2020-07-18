@@ -17,11 +17,18 @@ export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 export const LOG_OUT = 'LOG_OUT';
 
+// clear states or unmount
 export const CLEAR_AUTH_STATE = 'CLEAR_AUTH_STATE';
 
+// edit logged in user profile
 export const EDIT_USER_SUCCESSFUL = 'EDIT_USER_SUCCESSFUL';
 export const EDIT_USER_FAILED = 'EDIT_USER_FAILED';
 
+// post user profile
 export const USER_PROFILE_SUCCESS = 'USER_PROFILE_SUCCESS';
 export const USER_PROFILE_FAILURE = 'USER_PROFILE_FAILURE';
 export const FETCH_USER_PROFILE = 'FETCH_USER_PROFILE';
+
+// friends
+export const FETCH_FRIENDS_SUCCESS = 'FETCH_FRIENDS_SUCCESS';
+export const FETCH_FRIENDS_FAILURE = 'FETCH_FRIENDS_FAILURE';

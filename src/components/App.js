@@ -19,6 +19,7 @@ import {
 import propTypes from 'prop-types';
 import * as jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
+import { fetchUserFriends } from '../actions/friends';
 
 // const Settings = () => {
 //   return <div>Settings</div>;
@@ -64,12 +65,14 @@ class App extends React.Component {
           email: user.email,
         })
       );
+
+      this.props.dispatch(fetchUserFriends(user._id));
     }
   }
 
   render() {
     // console.log('props', this.props);
-    const { posts, auth } = this.props;
+    const { posts, auth, friends } = this.props;
     return (
       <Router>
         <div>
@@ -82,7 +85,14 @@ class App extends React.Component {
             exact
             path="/"
             render={(props) => {
-              return <Home posts={posts} {...props} />;
+              return (
+                <Home
+                  {...props}
+                  posts={posts}
+                  friends={friends}
+                  isLoggedIn={auth.isLoggedIn}
+                />
+              );
             }}
           />
           <Route path="/login" component={Login} />
@@ -109,6 +119,7 @@ function mapStateToProps(state) {
   return {
     posts: state.posts,
     auth: state.auth,
+    friends: state.friends,
   };
 }
 
