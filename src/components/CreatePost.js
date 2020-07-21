@@ -11,9 +11,9 @@ class CreatePost extends React.Component {
     };
   }
 
-  componentWillUnmount = () => {
-    this.props.dispatch(clearAuthState());
-  };
+  // componentWillUnmount = () => {
+  //   this.props.dispatch(clearAuthState());
+  // };
 
   handleChange = (e) => {
     this.setState({
@@ -23,6 +23,9 @@ class CreatePost extends React.Component {
 
   handleAddPost = () => {
     this.props.dispatch(createPost(this.state.content));
+    this.setState({
+      content: '',
+    });
   };
   render() {
     return (

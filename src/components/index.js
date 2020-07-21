@@ -13,6 +13,8 @@ import UserProfile from './UserProfile';
 import FriendList from './FriendList';
 import FriendListItem from './FriendListItem';
 import CreatePost from './CreatePost';
+import Post from './Post';
+import Comment from './Comment';
 
 // export
 export {
@@ -28,4 +30,6 @@ export {
   FriendList,
   FriendListItem,
   CreatePost,
+  Post,
+  Comment,
 };

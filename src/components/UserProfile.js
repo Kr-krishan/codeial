@@ -41,9 +41,9 @@ class UserProfile extends React.Component {
 
   handleAddFriend = async () => {
     const userId = this.props.match.params.userId;
-
+    console.log('userId', userId);
     const url = APIUrls.addFriend(userId);
-    const options = {
+    const option = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -51,9 +51,9 @@ class UserProfile extends React.Component {
       },
     };
 
-    const response = await fetch(url, options);
+    const response = await fetch(url, option);
     const data = await response.json();
-
+    console.log('url', url, data);
     if (data.success) {
       console.log('add friends', data);
       this.setState({
@@ -62,6 +62,7 @@ class UserProfile extends React.Component {
       });
       this.props.dispatch(addFriends(data.data.friendship));
     } else {
+      console.log('error in add frnd', data);
       this.setState({
         success: null,
         error: data.message,
