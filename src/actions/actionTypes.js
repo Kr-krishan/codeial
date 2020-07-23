@@ -43,5 +43,10 @@ export const ADD_POST = 'ADD_POST';
 // create comment
 export const ADD_COMMENT = 'ADD_COMMENT';
 
+// likes
 export const UPDATE_POST_LIKES = 'UPDATE_POST_LIKES';
 export const UPDATE_COMMENT_LIKES = 'UPDATE_COMMENT_LIKES';
+
+// search
+export const USER_SEARCH_RESULT_SUCCESS = 'USER_SEARCH_RESULT_SUCCESS';
+export const USER_SEARCH_RESULT_FAILURE = 'USER_SEARCH_RESULT_FAILURE';
