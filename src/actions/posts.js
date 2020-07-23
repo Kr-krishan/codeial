@@ -2,6 +2,7 @@ import {
   UPDATE_POSTS,
   ADD_POST,
   UPDATE_POST_LIKES,
+  UPDATE_COMMENT_LIKES,
   ADD_COMMENT,
 } from './actionTypes';
 import { APIUrls } from '../helper/urls';
@@ -112,7 +113,17 @@ export function addLikeToPost(postId, userId) {
   };
 }
 
-export function addLikes(id, likeType, userId) {
+// comments like
+export function addLikeToComment(commentId, userId, postId) {
+  return {
+    type: UPDATE_COMMENT_LIKES,
+    commentId,
+    userId,
+    postId,
+  };
+}
+
+export function addLikes(id, likeType, userId, postId) {
   return (dispatch) => {
     const url = APIUrls.toggleLike(id, likeType);
 
@@ -128,8 +139,11 @@ export function addLikes(id, likeType, userId) {
         console.log('Like data', data);
 
         if (data.success) {
-          dispatch(addLikeToPost(id, userId));
-          return;
+          if (likeType === 'Post') {
+            dispatch(addLikeToPost(id, userId));
+          } else {
+            dispatch(addLikeToComment(id, userId, postId));
+          }
         }
         // dispatch();
       });

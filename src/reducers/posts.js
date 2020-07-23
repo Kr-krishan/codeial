@@ -3,6 +3,7 @@ import {
   ADD_POST,
   ADD_COMMENT,
   UPDATE_POST_LIKES,
+  UPDATE_COMMENT_LIKES,
 } from '../actions/actionTypes';
 
 // post reducer with posts actions
@@ -39,6 +40,27 @@ export default function posts(state = [], action) {
         return post;
       });
       return newArray;
+
+    case UPDATE_COMMENT_LIKES:
+      const postArr = state.map((post) => {
+        if (post._id === action.postId) {
+          const commentArr = post.comments.map((comment) => {
+            if (comment._id === action.commentId) {
+              return {
+                ...comment,
+                likes: [...comment.likes, action.userId],
+              };
+            }
+            return comment;
+          });
+          return {
+            ...post,
+            comments: [...commentArr],
+          };
+        }
+        return post;
+      });
+      return postArr;
 
     default:
       return state;
