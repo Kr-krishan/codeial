@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createPost } from '../actions/posts';
-import { clearAuthState } from '../actions/auth';
 
 class CreatePost extends React.Component {
   constructor(props) {
@@ -11,22 +10,20 @@ class CreatePost extends React.Component {
     };
   }
 
-  // componentWillUnmount = () => {
-  //   this.props.dispatch(clearAuthState());
-  // };
-
   handleChange = (e) => {
     this.setState({
       content: e.target.value,
     });
   };
 
+  // to add post after submit
   handleAddPost = () => {
     this.props.dispatch(createPost(this.state.content));
     this.setState({
       content: '',
     });
   };
+
   render() {
     return (
       <div className="create-post">

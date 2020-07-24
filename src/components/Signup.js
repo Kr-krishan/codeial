@@ -64,7 +64,7 @@ class Signup extends Component {
   render() {
     const { error, inProgress, isLoggedIn } = this.props.auth;
     if (isLoggedIn) {
-      //redirect to a page
+      //redirect to home page
       return <Redirect to="/" />;
     }
     return (

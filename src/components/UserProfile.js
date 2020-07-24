@@ -23,6 +23,7 @@ class UserProfile extends React.Component {
     }
   }
 
+  // to open another user profile if a profile is already opened
   componentDidUpdate(prevProps) {
     const {
       match: { params: prevParams },
@@ -37,6 +38,7 @@ class UserProfile extends React.Component {
     }
   }
 
+  // check user frnds to show in list
   checkFriendOfUser = () => {
     // console.log('check friend', this.props);
     const { friends } = this.props;
@@ -53,6 +55,7 @@ class UserProfile extends React.Component {
     return false;
   };
 
+  // add a frnd using async await
   handleAddFriend = async () => {
     const userId = this.props.match.params.userId;
     console.log('userId', userId);
@@ -84,6 +87,7 @@ class UserProfile extends React.Component {
     }
   };
 
+  // remove a frnd using async await
   handleRemoveFriend = async () => {
     const userId = this.props.match.params.userId;
 

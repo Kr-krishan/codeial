@@ -49,10 +49,11 @@ class Login extends Component {
     // console.log('see the props', this.props);
     // console.log('see the props location', this.props.location.state);
 
+    // address of prev tried location else on home page
     const { from } = this.props.location.state || { from: { pathname: '/' } };
 
     if (isLoggedIn) {
-      //redirect to a page
+      //redirect to a page which previously tried to access
       return <Redirect to={from} />;
     }
     return (
@@ -89,9 +90,6 @@ class Login extends Component {
               Log In
             </button>
           )}
-          {/* <button onClick={this.handleFormSubmit} disabled={inProgress}>
-            Log In
-          </button> */}
         </div>
       </form>
     );

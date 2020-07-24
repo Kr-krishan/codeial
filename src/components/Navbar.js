@@ -5,11 +5,13 @@ import { logOutUser } from '../actions/auth';
 import { userSearch } from '../actions/search';
 
 class Navbar extends React.Component {
+  // to logout user and remove token from localstorage
   logOut = () => {
     localStorage.removeItem('token');
     this.props.dispatch(logOutUser());
   };
 
+  // handle user search
   handleSearch = (e) => {
     const searchText = e.target.value;
 

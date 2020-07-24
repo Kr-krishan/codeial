@@ -10,8 +10,10 @@ class Chat extends Component {
     this.state = {
       messages: [],
       typedMessage: '',
+      open: true,
     };
 
+    // connecting socket using chat server
     this.socket = io.connect('http://54.237.158.65:5000');
     this.userEmail = props.user.email;
 
@@ -20,6 +22,7 @@ class Chat extends Component {
     }
   }
 
+  // makinf connection for group chat using socket
   setupConnections = () => {
     const socketConnection = this.socket;
     const self = this;
@@ -54,6 +57,7 @@ class Chat extends Component {
     });
   };
 
+  // submit msg in group chat
   handleSubmit = () => {
     const { typedMessage } = this.state;
 
@@ -66,17 +70,37 @@ class Chat extends Component {
     }
   };
 
+  // to open and close chat box
+  toggleClass = () => {
+    const currentState = this.state.open;
+    this.setState({ open: !currentState });
+  };
+
   render() {
     const { messages, typedMessage } = this.state;
     return (
-      <div className="chat-container">
+      <div
+        className={
+          this.state.open ? 'chat-container open' : 'chat-container close'
+        }
+      >
         <div className="chat-header">
           Chat
-          <img
-            src="https://www.iconsdb.com/icons/preview/white/minus-5-xxl.png"
-            alt=""
-            height={17}
-          />
+          {this.state.open ? (
+            <img
+              src="https://www.iconsdb.com/icons/preview/white/minus-5-xxl.png"
+              alt=""
+              height={17}
+              onClick={this.toggleClass}
+            />
+          ) : (
+            <img
+              src="https://www.iconsdb.com/icons/preview/white/plus-5-xxl.png"
+              alt=""
+              height={17}
+              onClick={this.toggleClass}
+            />
+          )}
         </div>
         <div className="chat-messages">
           {messages.map((message) => (

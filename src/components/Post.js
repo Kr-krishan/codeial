@@ -12,12 +12,14 @@ class Post extends React.Component {
     };
   }
 
+  // to track change in input
   handleChange = (e) => {
     this.setState({
       comment: e.target.value,
     });
   };
 
+  // to add comment on enter
   handleKeyDown = (e) => {
     const { post } = this.props;
     const { comment } = this.state;
@@ -32,6 +34,7 @@ class Post extends React.Component {
     }
   };
 
+  // add like on post
   handleAddLike = () => {
     const { post, user } = this.props;
     this.props.dispatch(addLikes(post._id, 'Post', user._id));
@@ -39,6 +42,8 @@ class Post extends React.Component {
 
   render() {
     const { post, user } = this.props;
+
+    // to change color of heart after liking
     const isPostLikedByUser = post.likes.includes(user._id);
 
     return (

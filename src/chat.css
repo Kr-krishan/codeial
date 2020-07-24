@@ -1,9 +1,16 @@
 .chat-container {
   position: fixed;
-  height: 400px;
+  /* height: 400px; */
   width: 300px;
   bottom: 0;
   right: 10px;
+  transition: all ease-in-out 0.3s;
+}
+.open {
+  height: 400px;
+}
+.close {
+  height: 40px;
 }
 .chat-header {
   font-size: 20px;

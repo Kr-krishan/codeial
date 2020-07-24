@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 function FriendListItem(props) {
   return (
     <div>
+      {/* link to send on user Profile */}
       <Link className="friends-item" to={`user/${props.friend._id}`}>
         <div className="friends-img">
           <img

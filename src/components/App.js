@@ -21,11 +21,7 @@ import * as jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import { fetchUserFriends } from '../actions/friends';
 
-// const Settings = () => {
-//   return <div>Settings</div>;
-// };
-
-// added private route for settings
+// added private route for settings,userProfile,and also for more if added
 const PrivateRoute = (privateRouteProps) => {
   const { path, isLoggedIn, component: Component } = privateRouteProps;
   return (
@@ -53,6 +49,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
 
+    // jwt token of user logged in
     const token = localStorage.token;
     if (token) {
       const user = jwtDecode(token);
@@ -77,7 +74,6 @@ class App extends React.Component {
       <Router>
         <div>
           <Navbar />
-          {/* <PostsList posts={posts} /> */}
         </div>
 
         <Switch>

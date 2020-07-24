@@ -17,7 +17,7 @@ import Post from './Post';
 import Comment from './Comment';
 import Chat from './Chat';
 
-// export
+// export all components
 export {
   PostsList,
   App,

@@ -14,24 +14,29 @@ class Settings extends React.Component {
     };
   }
 
+  // to track change in input of each field(common function)
   handleChange = (fieldName, value) => {
     this.setState({
       [fieldName]: value,
     });
   };
 
+  // to update or edit profile
   handleUpdate = () => {
     const { name, password, confirmPassword } = this.state;
     const { user } = this.props.auth;
     this.props.dispatch(editUser(name, password, confirmPassword, user._id));
   };
 
+  // to clear the state
   componentWillUnmount = () => {
     this.props.dispatch(clearAuthState());
   };
 
   render() {
     const { user, error } = this.props.auth;
+
+    // if in editmode then form will show
     const { editMode } = this.state;
     return (
       <div className="settings">
