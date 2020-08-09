@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/codeial/static/css/main.d46292b8.chunk.css",
+    "main.js": "/codeial/static/js/main.7f6ce7d4.chunk.js",
+    "main.js.map": "/codeial/static/js/main.7f6ce7d4.chunk.js.map",
+    "runtime-main.js": "/codeial/static/js/runtime-main.48c318f0.js",
+    "runtime-main.js.map": "/codeial/static/js/runtime-main.48c318f0.js.map",
+    "static/js/2.00eade24.chunk.js": "/codeial/static/js/2.00eade24.chunk.js",
+    "static/js/2.00eade24.chunk.js.map": "/codeial/static/js/2.00eade24.chunk.js.map",
+    "index.html": "/codeial/index.html",
+    "precache-manifest.036ef2b10c89027bbaaeeb9260ab23d7.js": "/codeial/precache-manifest.036ef2b10c89027bbaaeeb9260ab23d7.js",
+    "service-worker.js": "/codeial/service-worker.js",
+    "static/css/main.d46292b8.chunk.css.map": "/codeial/static/css/main.d46292b8.chunk.css.map",
+    "static/js/2.00eade24.chunk.js.LICENSE.txt": "/codeial/static/js/2.00eade24.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.48c318f0.js",
+    "static/js/2.00eade24.chunk.js",
+    "static/css/main.d46292b8.chunk.css",
+    "static/js/main.7f6ce7d4.chunk.js"
+  ]
+}
